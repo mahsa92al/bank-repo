@@ -5,8 +5,7 @@ package ir.bank;
  */
 public class Management {
 
-    Customer[] customers = new Customer[1000];
-    static int customerIndex = 0;
+
 
     public void addNewAccount(String name, long id, double openingFund, MyDate openingDate) {
         for (int i = 0; i < 1000; i++) {
