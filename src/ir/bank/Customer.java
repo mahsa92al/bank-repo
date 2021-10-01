@@ -34,6 +34,22 @@ public class Customer extends Account {
         this.name = name;
     }
 
+    public MyDate getOpeningDate() {
+        return openingDate;
+    }
+
+    public void setOpeningDate(MyDate openingDate) {
+        this.openingDate = openingDate;
+    }
+
+    public double getOpeningFund() {
+        return openingFund;
+    }
+
+    public void setOpeningFund(double openingFund) {
+        this.openingFund = openingFund;
+    }
+
     public void addNewAccountBank(MyDate openingDate, double openingFund) {
         accounts[accountIndex] = new Account();
         AccountType.showAccountTypes();
