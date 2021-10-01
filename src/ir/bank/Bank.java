@@ -51,4 +51,16 @@ public class Bank {
             }
         }
     }
+    public void deposit(long id, long bankAccount, double money){
+        for(int i = 0; i < customerIndex; i++){
+            if(customers[i].getNationalId() != id){
+                System.out.println("There is no customer with this " + id);
+            }
+        }
+        for(int i = 0; i < customerIndex; i++){
+            if(customers[i].getNationalId() == id){
+                customers[i].deposit(bankAccount, money);
+            }
+        }
+    }
 }
