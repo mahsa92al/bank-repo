@@ -16,12 +16,6 @@ public class Customer extends Account {
     Account[] accounts = new Account[3];
     static int accountIndex = 0;
 
-    public Customer() {
-        for (int i = 0; i < 3; i++) {
-            accounts[i] = new Account();
-        }
-    }
-
     public long getNationalId() {
         return nationalId;
     }
@@ -39,6 +33,7 @@ public class Customer extends Account {
     }
 
     public void addNewAccountBank(MyDate openingDate, double openingFund) {
+        accounts[accountIndex] = new Account();
         AccountType.showAccountTypes();
         System.out.println("Account type:");
         int accountChoice = scanner.nextInt();  ////add regex here!
