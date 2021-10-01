@@ -14,18 +14,7 @@ public class Management {
 
 
 
-    public void calculateInterest(long id, long bankAccount){
-        for (int i = 0; i < customerIndex; i++) {
-            if(customers[i].getNationalId() != id){
-                System.out.println("There is no customer with this " + id);
-            }
-        }
-        for (int i = 0; i < customerIndex; i++) {
-            if(customers[i].getNationalId() == id){
-                customers[i].calculateInterest(bankAccount);
-            }
-        }
-    }
+
 
     public void viewTransactions(long id, long bankAccount){
         for (int i = 0; i < customerIndex; i++) {
