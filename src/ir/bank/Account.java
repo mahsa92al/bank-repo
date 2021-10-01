@@ -8,21 +8,11 @@ import ir.bank.enumeration.TransactionType;
  */
 public class Account {
 
-    private MyDate openingDate;
     private MyDate currentDate;
-    private double openingFund;
     private long bankAccount;
     private AccountType accountType;
     private double fund;
     private TransactionType transactionType;
-
-    public MyDate getOpeningDate() {
-        return openingDate;
-    }
-
-    public void setOpeningDate(MyDate openingDate) {
-        this.openingDate = openingDate;
-    }
 
     public MyDate getCurrentDate() {
         return currentDate;
@@ -30,14 +20,6 @@ public class Account {
 
     public void setCurrentDate(MyDate currentDate) {
         this.currentDate = currentDate;
-    }
-
-    public double getOpeningFund() {
-        return openingFund;
-    }
-
-    public void setOpeningFund(double openingFund) {
-        this.openingFund = openingFund;
     }
 
     public long getBankAccount() {

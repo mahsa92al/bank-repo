@@ -12,6 +12,8 @@ public class Customer extends Account {
     Scanner scanner = new Scanner(System.in);
     private long nationalId;
     private String name;
+    private MyDate openingDate;
+    private double openingFund;
 
     Account[] accounts = new Account[3];
     static int accountIndex = 0;
