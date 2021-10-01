@@ -83,6 +83,7 @@ public class Customer extends Account {
 
     public void addNewAccountBank(MyDate openingDate, double openingFund) {
         accounts[accountIndex] = new Account();
+         ////add regex here!
 
         accounts[accountIndex].setBankAccount((int) (Math.random() * 999999 - 100000 + 1) + 100000);
         accounts[accountIndex].setOpeningDate(openingDate);

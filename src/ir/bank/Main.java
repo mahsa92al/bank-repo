@@ -45,7 +45,15 @@ public class Main {
                     int year = scanner.nextInt();
                     AccountType.showAccountTypes();
                     System.out.println("Account type:");
-                    String accountType = scanner.next();
+                    int accountChoice = scanner.nextInt();
+                    AccountType accountType = null;
+                    if (accountChoice == 1) {
+                        accountType = AccountType.CHECKING;
+                    } else if (accountChoice == 2) {
+                        accountType = AccountType.SAVING;
+                    } else if (accountChoice == 3) {
+                        accountType = AccountType.LOAN;
+                    }
                     MyDate openingDate = new MyDate(day, month, year);
                     bank.addNewAccount(name, nationalId, Double.parseDouble(openingFund), openingDate,accountType);
                     break;
