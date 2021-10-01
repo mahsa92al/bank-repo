@@ -81,19 +81,6 @@ public class Customer extends Account {
         this.accountType = accountType;
     }
 
-    public void addNewAccountBank(MyDate openingDate, double openingFund) {
-        accounts[accountIndex] = new Account();
-         ////add regex here!
-
-        accounts[accountIndex].setBankAccount((int) (Math.random() * 999999 - 100000 + 1) + 100000);
-        accounts[accountIndex].setOpeningDate(openingDate);
-        accounts[accountIndex].setOpeningFund(openingFund);
-        accounts[accountIndex].setFund(accounts[accountIndex].getOpeningFund());
-        accounts[accountIndex].setCurrentDate(openingDate);
-        accounts[accountIndex].setTransactionType(TransactionType.DEPOSIT);
-        accountIndex++;
-    }
-
     public void printAccounts() {
         for (int i = 0; i < accountIndex; i++) {
             System.out.println("Bank account: " + accounts[i].getBankAccount() + ", Account type: " + accounts[i].getAccountType()

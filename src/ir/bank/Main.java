@@ -60,7 +60,7 @@ public class Main {
                 case 2:
                     System.out.println("Customer national ID:");
                     nationalId = scanner.nextLong();/////add regex here
-                    management.printCustomerAccount(nationalId);
+                    bank.printCustomerAccount(nationalId);
                     break;
                 case 3:
                     System.out.println("Enter customer national ID:");
