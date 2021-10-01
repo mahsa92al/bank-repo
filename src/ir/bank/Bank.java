@@ -24,4 +24,18 @@ public class Bank {
 
         }
     }
+
+    public void printCustomerAccount(long id) {
+        for (int i = 0; i < customerIndex; i++) {
+            if (id != customers[i].getNationalId()) {
+                System.out.println("There is no customer whit this ID!");
+            }
+        }
+        for (int j = 0; j < customerIndex; j++) {
+            if (id == customers[j].getNationalId()) {
+                customers[j].printAccounts();
+            }
+            break;
+        }
+    }
 }
