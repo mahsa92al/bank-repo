@@ -14,6 +14,8 @@ public class Customer extends Account {
     private String name;
     private MyDate openingDate;
     private double openingFund;
+    private long bankAccount;
+    private AccountType accountType;
 
     Account[] accounts = new Account[3];
     static int accountIndex = 0;
@@ -50,18 +52,38 @@ public class Customer extends Account {
         this.openingFund = openingFund;
     }
 
+    @Override
+    public long getBankAccount() {
+        return bankAccount;
+    }
+
+    @Override
+    public void setBankAccount(long bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    @Override
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    @Override
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
+    }
+
+    public Customer(long nationalId, String name, MyDate openingDate, double openingFund, AccountType accountType) {
+        this.nationalId = nationalId;
+        this.name = name;
+        this.openingDate = openingDate;
+        this.openingFund = openingFund;
+        this.bankAccount = (int) (Math.random() * 999999 - 100000 + 1) + 100000;
+        this.accountType = accountType;
+    }
+
     public void addNewAccountBank(MyDate openingDate, double openingFund) {
         accounts[accountIndex] = new Account();
-        AccountType.showAccountTypes();
-        System.out.println("Account type:");
-        int accountChoice = scanner.nextInt();  ////add regex here!
-        if (accountChoice == 1) {
-            accounts[accountIndex].setAccountType(AccountType.CHECKING);
-        } else if (accountChoice == 2) {
-            accounts[accountIndex].setAccountType(AccountType.SAVING);
-        } else if (accountChoice == 3) {
-            accounts[accountIndex].setAccountType(AccountType.LOAN);
-        }
+
         accounts[accountIndex].setBankAccount((int) (Math.random() * 999999 - 100000 + 1) + 100000);
         accounts[accountIndex].setOpeningDate(openingDate);
         accounts[accountIndex].setOpeningFund(openingFund);

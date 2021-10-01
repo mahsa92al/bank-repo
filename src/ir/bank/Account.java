@@ -9,8 +9,7 @@ import ir.bank.enumeration.TransactionType;
 public class Account {
 
     private MyDate currentDate;
-    private long bankAccount;
-    private AccountType accountType;
+
     private double fund;
     private TransactionType transactionType;
 

@@ -1,5 +1,6 @@
 package ir.bank;
 
+import ir.bank.enumeration.AccountType;
 import ir.bank.enumeration.ManagerMenu;
 
 import java.util.Scanner;
@@ -11,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Management management = new Management();
+        Bank bank = new Bank();
         Customer customer = new Customer();
         String choice;
         do{
@@ -42,8 +43,11 @@ public class Main {
                     int month = scanner.nextInt();
                     System.out.println("Year:");
                     int year = scanner.nextInt();
+                    AccountType.showAccountTypes();
+                    System.out.println("Account type:");
+                    String accountType = scanner.next();
                     MyDate openingDate = new MyDate(day, month, year);
-                    management.addNewAccount(name, nationalId, Double.parseDouble(openingFund), openingDate);
+                    bank.addNewAccount(name, nationalId, Double.parseDouble(openingFund), openingDate,accountType);
                     break;
                 case 2:
                     System.out.println("Customer national ID:");
