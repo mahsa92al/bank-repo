@@ -55,58 +55,105 @@ public class Main {
     }
 
     private static void showAccountTransaction() {
-        System.out.println("Enter customer national ID:");
-        long nationalId = scanner.nextLong(); //// add regex here
-        System.out.println("Enter Bank account:");
-        long bankAccount = scanner.nextLong(); //// add regex here
-        bank.viewTransactions(nationalId, bankAccount);
+        String nationalId;
+        do{
+            System.out.println("Enter customer national ID:");
+            nationalId = scanner.next();
+        }while (ValidationUtil.isNumeric(nationalId));
+        String bankAccount;
+        do{
+            System.out.println("Enter Bank account:");
+            bankAccount = scanner.next();
+        }while (ValidationUtil.isNumeric(bankAccount));
+
+        bank.viewTransactions(Long.parseLong(nationalId), Integer.parseInt(bankAccount));
     }
 
     private static void calcInterestOfAccount() {
-        System.out.println("Enter customer national ID:");
-        long nationalId = scanner.nextLong(); //// add regex here
-        System.out.println("Enter Bank account:");
-        long bankAccount = scanner.nextLong(); //// add regex here
+        String nationalId;
+        do{
+            System.out.println("Enter customer national ID:");
+            nationalId = scanner.next();
+        }while (ValidationUtil.isNumeric(nationalId));
+        String bankAccount;
+        do{
+            System.out.println("Enter Bank account:");
+            bankAccount = scanner.next();
+        }while (ValidationUtil.isNumeric(bankAccount));
         MyDate date = getDateFromUser();
-        bank.calculateInterest(nationalId, bankAccount, date);
+        bank.calculateInterest(Long.parseLong(nationalId), Integer.parseInt(bankAccount), date);
     }
 
     private static void depositToAccount() {
-        System.out.println("Enter customer national ID:");
-        long nationalId = scanner.nextLong(); //// add regex here
-        System.out.println("Enter Bank account:");
-        long bankAccount = scanner.nextLong(); //// add regex here
-        System.out.println("Enter amount of money:");
-        double amountOfMoney = scanner.nextDouble(); //// add regex here
+        long nationalId = getNationalIDForWithdrawAndDeposit();
+        int bankAccount = getAccountNumberForWithdrawAndDeposit();
+        double amountOfMoney = getAmountOfMoneyForWithdrawAndDeposit();
         MyDate currentDate = getDateFromUser();
         bank.deposit(nationalId, bankAccount, amountOfMoney, currentDate);
     }
 
     private static void withdrawFromAccount() {
-        System.out.println("Enter customer national ID:");
-        long nationalId = scanner.nextLong(); //// add regex here
-        System.out.println("Enter Bank account:");
-        long bankAccount = scanner.nextLong(); //// add regex here
-        System.out.println("Enter amount of money:");
-        double amountOfMoney = scanner.nextDouble(); //// add regex here
+        long nationalId = getNationalIDForWithdrawAndDeposit();
+        int bankAccount = getAccountNumberForWithdrawAndDeposit();
+        double amountOfMoney = getAmountOfMoneyForWithdrawAndDeposit();
         MyDate currentDate = getDateFromUser();
         bank.withDraw(nationalId, bankAccount, amountOfMoney, currentDate);
     }
 
+    private static long getNationalIDForWithdrawAndDeposit(){
+        String nationalId;
+        do{
+            System.out.println("Enter customer national ID:");
+            nationalId = scanner.next();
+        }while (ValidationUtil.isNumeric(nationalId));
+        return Long.parseLong(nationalId);
+    }
+
+    private static int getAccountNumberForWithdrawAndDeposit(){
+        String bankAccount;
+        do{
+            System.out.println("Enter Bank account:");
+            bankAccount = scanner.next();
+        }while (ValidationUtil.isNumeric(bankAccount));
+        return Integer.parseInt(bankAccount);
+    }
+
+    private static double getAmountOfMoneyForWithdrawAndDeposit(){
+        String amountOfMoney;
+        do{
+            System.out.println("Enter amount of money:");
+            amountOfMoney = scanner.next();
+        }while (ValidationUtil.isNumeric(amountOfMoney));
+        return Double.parseDouble(amountOfMoney);
+    }
+
     private static MyDate getDateFromUser() {
-        System.out.println("Day:");
-        int day = scanner.nextInt();
-        System.out.println("Month:");
-        int month = scanner.nextInt();
-        System.out.println("Year:");
-        int year = scanner.nextInt();
-        return new MyDate(day, month, year);
+        String day;
+        do{
+            System.out.println("Day:");
+            day = scanner.next();
+        }while (ValidationUtil.isNumeric(day));
+        String month;
+        do{
+            System.out.println("Month:");
+            month = scanner.next();
+        }while (ValidationUtil.isNumeric(month));
+        String year;
+        do{
+            System.out.println("Year:");
+            year = scanner.next();
+        }while (ValidationUtil.isNumeric(year));
+
+        return new MyDate(Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
     }
 
     private static void showAccountsByNationalId() {
-        System.out.println("Customer national ID:");
-        long nationalId = scanner.nextLong();/////add regex here
-        bank.printCustomerAccount(nationalId);
+        String nationalId;
+        do{
+            System.out.println("Customer national ID:");
+            nationalId = scanner.next();
+        }while (ValidationUtil.isNumeric(nationalId));
+        bank.printCustomerAccount(Long.parseLong(nationalId));
     }
 
     private static void addAccountBank() {
@@ -121,25 +168,41 @@ public class Main {
         do {
             System.out.println("Opening fund:");
             openingFund = scanner.next();
-        } while (!ValidationUtil.isValidPhoneNumber(openingFund));
+        } while (!ValidationUtil.isNumeric(openingFund));
+        String nationalId;
+        do{
+            System.out.println("Customer national ID:");
+            nationalId = scanner.next();
+        }while (!ValidationUtil.isNumeric(nationalId));
+        String day;
+        do{
+            System.out.println("Day:");
+            day = scanner.next();
+        }while (!ValidationUtil.isNumeric(day));
+        String month;
+        do{
+            System.out.println("Month:");
+            month = scanner.next();
+        }while (!ValidationUtil.isNumeric(month));
+        String year;
+        do{
+            System.out.println("Year:");
+            year = scanner.next();
+        }while (!ValidationUtil.isNumeric(year));
 
-        System.out.println("Customer national ID:");
-        long nationalId = scanner.nextLong();/////add regex here
-        System.out.println("Day:");
-        int day = scanner.nextInt();
-        System.out.println("Month:");
-        int month = scanner.nextInt();
-        System.out.println("Year:");
-        int year = scanner.nextInt();
         AccountType accountType = getUserAccountType();
-        MyDate openingDate = new MyDate(day, month, year);
-        bank.addNewAccount(name, nationalId, Double.parseDouble(openingFund), openingDate, accountType);
+        MyDate openingDate = new MyDate(Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year));
+        bank.addNewAccount(name, Long.parseLong(nationalId), Double.parseDouble(openingFund), openingDate, accountType);
     }
 
     private static AccountType getUserAccountType() {
         AccountType.showAccountTypes();
         System.out.println("Account type:");
-        int accountChoice = scanner.nextInt();
+        String choice;
+        do{
+            choice = scanner.next();
+        }while (!ValidationUtil.isNumeric(choice));
+        int accountChoice = Integer.parseInt(choice);
         AccountType accountType = null;
         if (accountChoice == 1) {
             accountType = AccountType.CHECKING;
